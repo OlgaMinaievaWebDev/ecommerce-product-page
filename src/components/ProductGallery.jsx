@@ -20,17 +20,36 @@ function ProductGallery() {
  
 
  return (
-  <div className="max-w-md">
-   <div className="mb-4">
-    <img src={selectedImage} alt="product image" />
+   <div className="max-w-md">
+     <div className="mb-4">
+       <img src={selectedImage} alt="product image" className="rounded-xl"/>
+     </div>
+     <div className="flex justify-between gap-4">
+       {images.map((image, index) => (
+         <div
+           key={index}
+           onClick={() => setSelectedImage(image.full)}
+           className={`
+        w-20 h-20 rounded-xl border-2 cursor-pointer overflow-hidden
+        ${selectedImage === image.full ? "border-orange" : "border-transparent"}
+     
+      `}
+         >
+           <img
+             src={image.thumb}
+             alt={`Thumbnail ${index + 1}`}
+             className={`
+          w-full h-full object-cover
+          ${selectedImage === image.full ? "opacity-30" : ""}
+          hover:opacity-30
+          transition-opacity duration-200
+        `}
+           />
+         </div>
+       ))}
+     </div>
    </div>
-   <div className="flex justify-between">
-    {images.map((image, index) => (
-     <img src={image.thumb} key={index} className="w-20 h-20 rounded-xl " />
-    ))}
-   </div>
-   </div>
-  )
+ );
 }
 
 export default ProductGallery;
