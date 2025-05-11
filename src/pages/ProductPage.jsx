@@ -1,5 +1,6 @@
+import ProductDescription from "../components/ProductDescription";
 import ProductGallery from "../components/ProductGallery";
-import QuantitySelector from "../components/QuantitySelector";
+
 
 function ProductPage() {
  return (
@@ -7,8 +8,9 @@ function ProductPage() {
      <div className="flex-1/2 ">
       <ProductGallery/>
      </div>
-     <div className="flex-1/2">
- <QuantitySelector/>
+   <div className="flex-1/2">
+    <ProductDescription/>
+
      </div>
    </div>
  );
