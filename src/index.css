@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
 @import "tailwindcss";
 
+body{
+  font-family: var(--font-display);
+  background-color: var(--color-white);
+  box-sizing: border-box;
+}
 @theme {
   --color-orange:#FF7D1A;
   --color-paleOrange:#FFEDE0;
