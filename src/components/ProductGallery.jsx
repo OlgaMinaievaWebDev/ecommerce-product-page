@@ -18,7 +18,6 @@ const images = [
 function ProductGallery() {
  const [selectedImage, setSelectedImage] = useState(images[0].full)
  
-
  return (
    <div className="max-w-md">
      <div className="mb-4">
