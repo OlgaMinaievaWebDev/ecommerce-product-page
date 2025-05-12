@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
       if (existingItem) {
         return prevItems.map((item) =>
           item.product.name === product.name
-            ? { ...item, quantity: item.quantity + quantity }
+            ? { ...item, quantity }
             : item
         );
       }
@@ -21,10 +21,20 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const clearCart = () => setCartItems([]);
+  // Calculate total quantity
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  //clear cart
+ const clearCart = () => setCartItems([]);
+ 
+ //Total price
+ const totalPrice = cartItems.reduce(
+   (acc, item) => acc + item.product.price * item.quantity,
+   0
+ );
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, clearCart }}>
+    <CartContext.Provider value={{ cartItems, addToCart, clearCart, totalQuantity, totalPrice }}>
       {children}
     </CartContext.Provider>
   );

@@ -1,8 +1,13 @@
 import avatarLogo from '../assets/images/image-avatar.png';
 import cartIcon from '../assets/images/icon-cart.svg';
+import { useCart } from '../context/CartContext';
+
 
 function Navbar() {
-  return (
+
+  const { totalQuantity } = useCart();
+  
+   return (
     <header className="h-20 flex justify-between items-center border-b border-grayishBlue">
       <div className="flex items-center space-x-8">
         <h1 className="text-4xl font-bold ">sneakers</h1>
@@ -56,7 +61,7 @@ function Navbar() {
         <button className="relative">
           <img src={cartIcon} alt="Cart" className="w-6 h-6 cursor-pointer" />
           <span className="absolute -top-2 -right-2 bg-orange text-white text-xs px-1.5 py-0.5 rounded-full">
-            2
+            {totalQuantity}
           </span>
         </button>
         <button>
