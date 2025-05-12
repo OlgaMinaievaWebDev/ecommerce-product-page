@@ -1,11 +1,14 @@
 import avatarLogo from '../assets/images/image-avatar.png';
 import cartIcon from '../assets/images/icon-cart.svg';
 import { useCart } from '../context/CartContext';
+import Cart from './Cart';
+import { useState } from 'react';
 
 
 function Navbar() {
 
   const { totalQuantity } = useCart();
+  const [isOpenModal, setIsOpenModal] = useState(false);
   
    return (
     <header className="h-20 flex justify-between items-center border-b border-grayishBlue">
@@ -58,12 +61,17 @@ function Navbar() {
       </div>
 
       <div className="flex items-center gap-6">
-        <button className="relative">
+        <button className="relative" onClick={()=>setIsOpenModal((show)=>!show)}>
           <img src={cartIcon} alt="Cart" className="w-6 h-6 cursor-pointer" />
           <span className="absolute -top-2 -right-2 bg-orange text-white text-xs px-1.5 py-0.5 rounded-full">
             {totalQuantity}
           </span>
-        </button>
+         </button>
+         {isOpenModal && (
+          
+             <Cart/>
+         
+         )}
         <button>
           <img
             src={avatarLogo}
