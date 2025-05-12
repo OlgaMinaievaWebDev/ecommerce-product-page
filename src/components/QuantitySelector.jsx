@@ -1,8 +1,18 @@
 import { useState } from 'react';
 import cart from '../assets/images/icon-cart.svg'
+import { useCart } from '../context/CartContext';
 
-function QuantitySelector() {
+function QuantitySelector({product}) {
  const [quantity, setQuantity] = useState(0)
+ const { addToCart } = useCart() 
+ 
+ const handleAddToCart = () => {
+  if (quantity > 0) {
+   addToCart(product, quantity)
+   setQuantity(0)
+   console.log(product,quantity)
+  }
+ }
 
   return (
     <div className="flex gap-4 items-center">
@@ -13,17 +23,20 @@ function QuantitySelector() {
         >
           -
         </button>
-     <span className="px-4 text-lg font-semibold">{quantity }</span>
+        <span className="px-4 text-lg font-semibold">{quantity}</span>
         <button
           className="p-2 text-orange text-xl font-bold"
           onClick={() => {
-            setQuantity(prev=> prev+ 1);
+            setQuantity((prev) => prev + 1);
           }}
         >
           +
         </button>
       </div>
-      <button className="bg-orange text-black px-10 py-3 rounded-md shadow-md hover:bg-orange-600 transition-all flex gap-2 items-center font-semibold">
+      <button
+        className="bg-orange text-black px-10 py-3 rounded-md shadow-md hover:bg-orange-600 transition-all flex gap-2 items-center font-semibold"
+        onClick={handleAddToCart}
+      >
         <img src={cart} alt="cart logo" className="w-4 h-4 cursor-pointer" />{" "}
         Add to cart
       </button>

@@ -1,6 +1,6 @@
 import ProductDescription from "../components/ProductDescription";
 import ProductGallery from "../components/ProductGallery";
-
+import { CartProvider } from "../context/CartContext";
 
 function ProductPage() {
  return (
@@ -8,10 +8,13 @@ function ProductPage() {
      <div className="flex-1/2 ">
       <ProductGallery/>
      </div>
+     <CartProvider>
+       
    <div className="flex-1/2">
     <ProductDescription/>
 
      </div>
+     </CartProvider>
    </div>
  );
 }

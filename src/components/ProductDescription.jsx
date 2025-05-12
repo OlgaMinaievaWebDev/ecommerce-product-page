@@ -1,5 +1,5 @@
 import QuantitySelector from "./QuantitySelector";
-
+const product = " Fall Limited Edition Sneakers";
 function ProductDescription() {
   return (
     <section className="space-y-4 w-[350px]">
@@ -8,7 +8,7 @@ function ProductDescription() {
       </h3>
 
       <h1 className="text-3xl font-black leading-tight">
-        Fall Limited Edition Sneakers
+        {product}
       </h1>
 
       <p className="text-md text-grayishBlue">
@@ -26,7 +26,7 @@ function ProductDescription() {
 
       <p className="text-grayishBlue line-through">$250.00</p>
 
-      <QuantitySelector />
+      <QuantitySelector product={ product} />
     </section>
   );
 }
