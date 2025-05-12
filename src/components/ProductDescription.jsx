@@ -1,5 +1,12 @@
 import QuantitySelector from "./QuantitySelector";
-const product = " Fall Limited Edition Sneakers";
+
+const product = {
+  name: "Fall Limited Edition Sneakers",
+  price: 125,
+  originalPrice: 250,
+  discount: 50, // Percentage
+};
+
 function ProductDescription() {
   return (
     <section className="space-y-4 w-[350px]">
@@ -7,9 +14,7 @@ function ProductDescription() {
         Sneaker Company
       </h3>
 
-      <h1 className="text-3xl font-black leading-tight">
-        {product}
-      </h1>
+      <h1 className="text-3xl font-black leading-tight">{product.name}</h1>
 
       <p className="text-md text-grayishBlue">
         These low-profile sneakers are your perfect casual wear companion.
@@ -18,15 +23,15 @@ function ProductDescription() {
       </p>
 
       <div className="flex items-center space-x-4">
-        <p className="font-black text-lg">$125.00</p>
+        <p className="font-black text-lg">${product.price}</p>
         <span className="rounded-md bg-black text-white py-1 px-2 text-sm">
-          50%
+          {product.discount}%
         </span>
       </div>
 
-      <p className="text-grayishBlue line-through">$250.00</p>
+      <p className="text-grayishBlue line-through">${product.originalPrice}</p>
 
-      <QuantitySelector product={ product} />
+      <QuantitySelector product={product} />
     </section>
   );
 }
