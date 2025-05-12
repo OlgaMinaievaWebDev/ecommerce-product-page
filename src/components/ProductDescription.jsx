@@ -2,6 +2,8 @@ import QuantitySelector from "./QuantitySelector";
 
 const product = {
   name: "Fall Limited Edition Sneakers",
+  description:
+    "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything weather can offer.",
   price: 125,
   originalPrice: 250,
   discount: 50, // Percentage
@@ -17,9 +19,7 @@ function ProductDescription() {
       <h1 className="text-3xl font-black leading-tight">{product.name}</h1>
 
       <p className="text-md text-grayishBlue">
-        These low-profile sneakers are your perfect casual wear companion.
-        Featuring a durable rubber outer sole, they'll withstand everything
-        weather can offer.
+       {product.description}
       </p>
 
       <div className="flex items-center space-x-4">
