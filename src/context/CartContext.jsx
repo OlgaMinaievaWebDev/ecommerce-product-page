@@ -30,7 +30,7 @@ export const CartProvider = ({ children }) => {
  //Total price
  const totalPrice = cartItems.reduce(
    (acc, item) => acc + item.product.price * item.quantity,
-   0
+   1
  );
 
   return (
