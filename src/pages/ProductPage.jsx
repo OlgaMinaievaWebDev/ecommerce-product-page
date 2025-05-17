@@ -4,17 +4,14 @@ import ProductGallery from "../components/ProductGallery";
 
 function ProductPage() {
  return (
-   <div className="p-12 flex gap-12 items-center">
-     <div className="flex-1/2 ">
-      <ProductGallery/>
+   <div className="p-12 flex items-center justify-center mx-auto gap-40">
+     <div className="w-1/2">
+       <ProductGallery />
      </div>
-   
-       
-   <div className="flex-1/2">
-    <ProductDescription/>
 
+     <div className="w-1/2">
+       <ProductDescription />
      </div>
-    
    </div>
  );
 }
