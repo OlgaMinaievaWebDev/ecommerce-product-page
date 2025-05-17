@@ -3,7 +3,7 @@ import cart from "../assets/images/icon-cart.svg";
 import { useCart } from "../context/CartContext";
 
 function QuantitySelector({ product }) {
-  const [quantity, setQuantity] = useState(1); // Start at 1 to avoid 0 quantity
+  const [quantity, setQuantity] = useState(0); 
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
