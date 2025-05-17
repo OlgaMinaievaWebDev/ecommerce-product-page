@@ -9,7 +9,7 @@ function QuantitySelector({ product }) {
   const handleAddToCart = () => {
     if (quantity > 0) {
       addToCart(product, quantity); // Pass the entire product object and quantity
-      setQuantity(1); // Reset quantity after adding to cart
+      setQuantity(0); // Reset quantity after adding to cart
       console.log(product, quantity);
     }
   };

@@ -5,7 +5,7 @@ import trashIcon from "../assets/images/icon-delete.svg";
 import { useCart } from "../context/CartContext";
 
 function Cart() {
-  const { totalQuantity, removeFromCart } = useCart(); // include removeFromCart
+  const { totalQuantity, clearCart } = useCart(); // include removeFromCart
   const total = product.price * totalQuantity;
 
   return createPortal(
@@ -32,7 +32,7 @@ function Cart() {
               </p>
             </div>
             <button
-              onClick={removeFromCart}
+              onClick={clearCart}
               className="hover:opacity-70 transition-opacity duration-200"
               title="Remove from cart"
             >
