@@ -3,13 +3,13 @@ import cart from "../assets/images/icon-cart.svg";
 import { useCart } from "../context/CartContext";
 
 function QuantitySelector({ product }) {
-  const [quantity, setQuantity] = useState(1); // Start from 1
+  const [quantity, setQuantity] = useState(0); 
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
     if (quantity > 0) {
       addToCart(product, quantity);
-      setQuantity(1); // Reset to 1
+      setQuantity(0); 
       console.log("Added to cart:", product, quantity);
     }
   };
