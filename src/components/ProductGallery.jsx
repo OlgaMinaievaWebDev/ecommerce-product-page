@@ -1,54 +1,50 @@
-import imgProd1 from "../assets/images/image-product-1.jpg";
-import imgProd1Thumb from "../assets/images/image-product-1-thumbnail.jpg";
-import imgProd2 from "../assets/images/image-product-2.jpg";
-import imgProd2Thumb from "../assets/images/image-product-2-thumbnail.jpg";
-import imgProd3 from "../assets/images/image-product-3.jpg";
-import imgProd3Thumb from "../assets/images/image-product-3-thumbnail.jpg";
-import imgProd4 from "../assets/images/image-product-4.jpg";
-import imgProd4Thumb from "../assets/images/image-product-4-thumbnail.jpg";
 import { useState } from "react";
+import Lightbox from "./Lightbox";
+import imgProd1 from "../assets/images/image-product-1.jpg";
+import imgProd2 from "../assets/images/image-product-2.jpg";
+import imgProd3 from "../assets/images/image-product-3.jpg";
+import imgProd4 from "../assets/images/image-product-4.jpg";
 
-const images = [
- { full: imgProd1, thumb: imgProd1Thumb },
- { full: imgProd2, thumb: imgProd2Thumb },
- { full: imgProd3, thumb: imgProd3Thumb },
- { full: imgProd4, thumb: imgProd4Thumb },
-]
+const images = [imgProd1, imgProd2, imgProd3, imgProd4];
 
 function ProductGallery() {
- const [selectedImage, setSelectedImage] = useState(images[0].full)
- 
- return (
-   <div className="max-w-md">
-     <div className="mb-4">
-       <img src={selectedImage} alt="product image" className="rounded-xl"/>
-     </div>
-     <div className="flex justify-between gap-4">
-       {images.map((image, index) => (
-         <div
-           key={index}
-           onClick={() => setSelectedImage(image.full)}
-           className={`
-        w-20 h-20 rounded-xl border-2 cursor-pointer overflow-hidden
-        ${selectedImage === image.full ? "border-orange" : "border-transparent"}
-     
-      `}
-         >
-           <img
-             src={image.thumb}
-             alt={`Thumbnail ${index + 1}`}
-             className={`
-          w-full h-full object-cover
-          ${selectedImage === image.full ? "opacity-30" : ""}
-          hover:opacity-30
-          transition-opacity duration-200
-        `}
-           />
-         </div>
-       ))}
-     </div>
-   </div>
- );
+  const [selectedImage, setSelectedImage] = useState(images[0]);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  return (
+    <div className="flex flex-col items-center space-y-6">
+      {/* Main Image */}
+      <img
+        src={selectedImage}
+        alt="Main product"
+        className="w-[400px] h-[400px] object-cover rounded-lg cursor-pointer"
+        onClick={() => setLightboxOpen(true)}
+      />
+
+      {/* Thumbnails */}
+      <div className="grid grid-cols-4 gap-4">
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Thumbnail ${index + 1}`}
+            onClick={() => setSelectedImage(img)}
+            className={`w-20 h-20 object-cover rounded-lg cursor-pointer border-2 ${
+              selectedImage === img ? "border-orange-500" : "border-transparent"
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <Lightbox
+          imageSrc={selectedImage}
+          onClose={() => setLightboxOpen(false)}
+        />
+      )}
+    </div>
+  );
 }
 
 export default ProductGallery;
