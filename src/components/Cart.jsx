@@ -6,18 +6,23 @@ import { useCart } from "../context/CartContext";
 function Cart() {
   const { cartItems, clearCart, totalQuantity } = useCart();
 
+ const orderComplete =()=>{
+  alert("Your order is complete")
+  clearCart()
+ }
+
   return createPortal(
     <aside
       aria-label="Shopping cart"
-      className="w-[320px] rounded-lg shadow-lg fixed top-20 right-20 z-10 bg-white"
+      className="w-[350px] rounded-lg shadow-lg fixed top-20 right-20 z-10 bg-white"
     >
-      <h1 className="border-b border-grayishBlue font-semibold px-4 py-2">
+      <h1 className="border-b border-grayishBlue font-semibold px-9 py-2 ">
         Cart
       </h1>
 
       {totalQuantity > 0 ? (
         <>
-          <div className="flex flex-col gap-4 p-4">
+          <div className="flex items-center justify-center gap-4 p-4">
             {cartItems.map(({ product, quantity }, index) => (
               <div key={index} className="flex items-center gap-4">
                 <img
@@ -38,16 +43,18 @@ function Cart() {
             ))}
             <button
               onClick={clearCart}
-              className="self-end hover:opacity-70 transition-opacity duration-200"
+              className=" hover:opacity-70 transition-opacity duration-200"
               title="Remove all"
             >
               <img src={trashIcon} alt="trash icon" className="w-4 h-4" />
             </button>
           </div>
 
-          <button className="bg-orange text-black px-10 py-3 rounded-md shadow-md hover:opacity-70 transition-all font-semibold cursor-pointer w-4/5 mx-auto mb-4 flex justify-center items-center">
-            Checkout
-          </button>
+          <button
+          onClick={orderComplete}
+          className="bg-orange text-black px-10 py-3 rounded-md shadow-md hover:opacity-70 transition-all font-semibold cursor-pointer w-4/5 mx-auto mb-4 flex justify-center items-center">
+  Checkout
+</button>
         </>
       ) : (
         <p className="p-4 text-grayishBlue text-sm text-center">
