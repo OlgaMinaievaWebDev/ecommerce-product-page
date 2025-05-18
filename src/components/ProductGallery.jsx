@@ -29,7 +29,7 @@ function ProductGallery() {
             src={img}
             alt={`Thumbnail ${index + 1}`}
             onClick={() => setSelectedImage(img)}
-            className={`w-20 h-20 object-cover rounded-lg cursor-pointer border-2 ${
+            className={`w-20 h-20 object-cover rounded-lg cursor-pointer border-2 hover:opacity-50  ${
               selectedImage === img ? "border-orange-500" : "border-transparent"
             }`}
           />

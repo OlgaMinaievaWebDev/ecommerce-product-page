@@ -6,7 +6,7 @@ function ProductDescription() {
   const firstProduct = product[0]; // access the first product
 
   return (
-    <section className="space-y-4 w-[450px]">
+    <section className="space-y-4 ">
       <h3 className="uppercase font-semibold text-grayishBlue tracking-wide">
         Sneaker Company
       </h3>
